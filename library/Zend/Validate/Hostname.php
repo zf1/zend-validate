@@ -949,7 +949,8 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
                     $regexChars = array(0 => '/^[a-z0-9\x2d]{1,63}$/i');
                     if ($this->_options['idn'] &&  isset($this->_validIdns[strtoupper($this->_tld)])) {
                         if (is_string($this->_validIdns[strtoupper($this->_tld)])) {
-                            $regexChars += include($this->_validIdns[strtoupper($this->_tld)]);
+                            $fileName = dirname(__FILE__).str_replace('Zend/Validate/', '/', $this->_validIdns[strtoupper($this->_tld)]);
+                            $regexChars += include($fileName);
                         } else {
                             $regexChars += $this->_validIdns[strtoupper($this->_tld)];
                         }
