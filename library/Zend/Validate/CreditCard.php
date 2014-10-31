@@ -52,7 +52,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
 
     const CHECKSUM       = 'creditcardChecksum';
     const CONTENT        = 'creditcardContent';
-    const INVALID        = 'creditcardInvalid';
+    const INVALID_TYPE   = 'creditcardInvalid';
     const LENGTH         = 'creditcardLength';
     const PREFIX         = 'creditcardPrefix';
     const SERVICE        = 'creditcardService';
@@ -66,7 +66,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
     protected $_messageTemplates = array(
         self::CHECKSUM       => "'%value%' seems to contain an invalid checksum",
         self::CONTENT        => "'%value%' must contain only digits",
-        self::INVALID        => "Invalid type given. String expected",
+        self::INVALID_TYPE   => "Invalid type given. String expected",
         self::LENGTH         => "'%value%' contains an invalid amount of digits",
         self::PREFIX         => "'%value%' is not from an allowed institute",
         self::SERVICE        => "'%value%' seems to be an invalid creditcard number",
@@ -248,7 +248,7 @@ class Zend_Validate_CreditCard extends Zend_Validate_Abstract
         $this->_setValue($value);
 
         if (!is_string($value)) {
-            $this->_error(self::INVALID, $value);
+            $this->_error(self::INVALID_TYPE, $value);
             return false;
         }
 

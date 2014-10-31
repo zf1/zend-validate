@@ -46,8 +46,8 @@ class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
     const OBJECT_COUNT  = 1024;
     const ALL           = 2047;
 
-    const INVALID  = 'notEmptyInvalid';
-    const IS_EMPTY = 'isEmpty';
+    const INVALID_TYPE = 'notEmptyInvalid';
+    const IS_EMPTY     = 'isEmpty';
 
     protected $_constants = array(
         self::BOOLEAN       => 'boolean',
@@ -69,8 +69,8 @@ class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::IS_EMPTY => "Value is required and can't be empty",
-        self::INVALID  => "Invalid type given. String, integer, float, boolean or array expected",
+        self::IS_EMPTY     => "Value is required and can't be empty",
+        self::INVALID_TYPE => "Invalid type given. String, integer, float, boolean or array expected",
     );
 
     /**
@@ -159,7 +159,7 @@ class Zend_Validate_NotEmpty extends Zend_Validate_Abstract
     {
         if ($value !== null && !is_string($value) && !is_int($value) && !is_float($value) &&
             !is_bool($value) && !is_array($value) && !is_object($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

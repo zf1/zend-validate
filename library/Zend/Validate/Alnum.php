@@ -32,9 +32,9 @@
  */
 class Zend_Validate_Alnum extends Zend_Validate_Abstract
 {
-    const INVALID      = 'alnumInvalid';
-    const NOT_ALNUM    = 'notAlnum';
-    const STRING_EMPTY = 'alnumStringEmpty';
+    const INVALID_TYPE  = 'alnumInvalid';
+    const NOT_ALNUM     = 'notAlnum';
+    const STRING_EMPTY  = 'alnumStringEmpty';
 
     /**
      * Whether to allow white space characters; off by default
@@ -57,7 +57,7 @@ class Zend_Validate_Alnum extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID      => "Invalid type given. String, integer or float expected",
+        self::INVALID_TYPE => "Invalid type given. String, integer or float expected",
         self::NOT_ALNUM    => "'%value%' contains characters which are non alphabetic and no digits",
         self::STRING_EMPTY => "'%value%' is an empty string",
     );
@@ -118,7 +118,7 @@ class Zend_Validate_Alnum extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value) && !is_int($value) && !is_float($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

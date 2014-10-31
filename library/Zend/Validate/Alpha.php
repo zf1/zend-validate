@@ -32,7 +32,7 @@
  */
 class Zend_Validate_Alpha extends Zend_Validate_Abstract
 {
-    const INVALID      = 'alphaInvalid';
+    const INVALID_TYPE = 'alphaInvalid';
     const NOT_ALPHA    = 'notAlpha';
     const STRING_EMPTY = 'alphaStringEmpty';
 
@@ -57,7 +57,7 @@ class Zend_Validate_Alpha extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID      => "Invalid type given. String expected",
+        self::INVALID_TYPE => "Invalid type given. String expected",
         self::NOT_ALPHA    => "'%value%' contains non alphabetic characters",
         self::STRING_EMPTY => "'%value%' is an empty string"
     );
@@ -118,7 +118,7 @@ class Zend_Validate_Alpha extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

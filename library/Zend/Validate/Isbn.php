@@ -32,11 +32,11 @@
  */
 class Zend_Validate_Isbn extends Zend_Validate_Abstract
 {
-    const AUTO    = 'auto';
-    const ISBN10  = '10';
-    const ISBN13  = '13';
-    const INVALID = 'isbnInvalid';
-    const NO_ISBN = 'isbnNoIsbn';
+    const AUTO         = 'auto';
+    const ISBN10       = '10';
+    const ISBN13       = '13';
+    const INVALID_TYPE = 'isbnInvalid';
+    const NO_ISBN      = 'isbnNoIsbn';
 
     /**
      * Validation failure message template definitions.
@@ -44,8 +44,8 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID => "Invalid type given. String or integer expected",
-        self::NO_ISBN => "'%value%' is not a valid ISBN number",
+        self::INVALID_TYPE => "Invalid type given. String or integer expected",
+        self::NO_ISBN      => "'%value%' is not a valid ISBN number",
     );
 
     /**
@@ -155,7 +155,7 @@ class Zend_Validate_Isbn extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value) && !is_int($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

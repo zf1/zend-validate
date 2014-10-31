@@ -37,15 +37,15 @@
  */
 class Zend_Validate_Int extends Zend_Validate_Abstract
 {
-    const INVALID = 'intInvalid';
-    const NOT_INT = 'notInt';
+    const INVALID_TYPE = 'intInvalid';
+    const NOT_INT      = 'notInt';
 
     /**
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID => "Invalid type given. String or integer expected",
-        self::NOT_INT => "'%value%' does not appear to be an integer",
+        self::INVALID_TYPE => "Invalid type given. String or integer expected",
+        self::NOT_INT      => "'%value%' does not appear to be an integer",
     );
 
     protected $_locale;
@@ -112,7 +112,7 @@ class Zend_Validate_Int extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value) && !is_int($value) && !is_float($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

@@ -42,8 +42,8 @@ class Zend_Validate_Sitemap_Priority extends Zend_Validate_Abstract
      * Validation key for not valid
      *
      */
-    const NOT_VALID = 'sitemapPriorityNotValid';
-    const INVALID   = 'sitemapPriorityInvalid';
+    const NOT_VALID    = 'sitemapPriorityNotValid';
+    const INVALID_TYPE = 'sitemapPriorityInvalid';
 
     /**
      * Validation failure message template definitions
@@ -51,8 +51,8 @@ class Zend_Validate_Sitemap_Priority extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::NOT_VALID => "'%value%' is not a valid sitemap priority",
-        self::INVALID   => "Invalid type given. Numeric string, integer or float expected",
+        self::NOT_VALID    => "'%value%' is not a valid sitemap priority",
+        self::INVALID_TYPE => "Invalid type given. Numeric string, integer or float expected",
     );
 
     /**
@@ -66,7 +66,7 @@ class Zend_Validate_Sitemap_Priority extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_numeric($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

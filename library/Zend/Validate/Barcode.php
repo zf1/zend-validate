@@ -37,7 +37,7 @@
  */
 class Zend_Validate_Barcode extends Zend_Validate_Abstract
 {
-    const INVALID        = 'barcodeInvalid';
+    const INVALID_TYPE   = 'barcodeInvalid';
     const FAILED         = 'barcodeFailed';
     const INVALID_CHARS  = 'barcodeInvalidChars';
     const INVALID_LENGTH = 'barcodeInvalidLength';
@@ -46,7 +46,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
         self::FAILED         => "'%value%' failed checksum validation",
         self::INVALID_CHARS  => "'%value%' contains invalid characters",
         self::INVALID_LENGTH => "'%value%' should have a length of %length% characters",
-        self::INVALID        => "Invalid type given. String expected",
+        self::INVALID_TYPE   => "Invalid type given. String expected",
     );
 
     /**
@@ -185,7 +185,7 @@ class Zend_Validate_Barcode extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

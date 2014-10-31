@@ -37,15 +37,15 @@
  */
 class Zend_Validate_Float extends Zend_Validate_Abstract
 {
-    const INVALID   = 'floatInvalid';
-    const NOT_FLOAT = 'notFloat';
+    const INVALID_TYPE = 'floatInvalid';
+    const NOT_FLOAT    = 'notFloat';
 
     /**
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID   => "Invalid type given. String, integer or float expected",
-        self::NOT_FLOAT => "'%value%' does not appear to be a float",
+        self::INVALID_TYPE => "Invalid type given. String, integer or float expected",
+        self::NOT_FLOAT    => "'%value%' does not appear to be a float",
     );
 
     protected $_locale;
@@ -110,7 +110,7 @@ class Zend_Validate_Float extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value) && !is_int($value) && !is_float($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

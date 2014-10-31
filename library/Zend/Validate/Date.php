@@ -32,7 +32,7 @@
  */
 class Zend_Validate_Date extends Zend_Validate_Abstract
 {
-    const INVALID        = 'dateInvalid';
+    const INVALID_TYPE   = 'dateInvalid';
     const INVALID_DATE   = 'dateInvalidDate';
     const FALSEFORMAT    = 'dateFalseFormat';
 
@@ -42,7 +42,7 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID        => "Invalid type given. String, integer, array or Zend_Date expected",
+        self::INVALID_TYPE   => "Invalid type given. String, integer, array or Zend_Date expected",
         self::INVALID_DATE   => "'%value%' does not appear to be a valid date",
         self::FALSEFORMAT    => "'%value%' does not fit the date format '%format%'",
     );
@@ -163,7 +163,7 @@ class Zend_Validate_Date extends Zend_Validate_Abstract
     {
         if (!is_string($value) && !is_int($value) && !is_float($value) &&
             !is_array($value) && !($value instanceof Zend_Date)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

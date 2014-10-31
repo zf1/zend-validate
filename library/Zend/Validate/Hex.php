@@ -32,8 +32,8 @@
  */
 class Zend_Validate_Hex extends Zend_Validate_Abstract
 {
-    const INVALID = 'hexInvalid';
-    const NOT_HEX = 'notHex';
+    const INVALID_TYPE = 'hexInvalid';
+    const NOT_HEX      = 'notHex';
 
     /**
      * Validation failure message template definitions
@@ -41,8 +41,8 @@ class Zend_Validate_Hex extends Zend_Validate_Abstract
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID => "Invalid type given. String expected",
-        self::NOT_HEX => "'%value%' has not only hexadecimal digit characters",
+        self::INVALID_TYPE => "Invalid type given. String expected",
+        self::NOT_HEX      => "'%value%' has not only hexadecimal digit characters",
     );
 
     /**
@@ -56,7 +56,7 @@ class Zend_Validate_Hex extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value) && !is_int($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

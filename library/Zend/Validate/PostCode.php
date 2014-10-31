@@ -37,15 +37,15 @@
  */
 class Zend_Validate_PostCode extends Zend_Validate_Abstract
 {
-    const INVALID  = 'postcodeInvalid';
-    const NO_MATCH = 'postcodeNoMatch';
+    const INVALID_TYPE = 'postcodeInvalid';
+    const NO_MATCH     = 'postcodeNoMatch';
 
     /**
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID  => "Invalid type given. String or integer expected",
-        self::NO_MATCH => "'%value%' does not appear to be a postal code",
+        self::INVALID_TYPE => "Invalid type given. String or integer expected",
+        self::NO_MATCH     => "'%value%' does not appear to be a postal code",
     );
 
     /**
@@ -195,7 +195,7 @@ class Zend_Validate_PostCode extends Zend_Validate_Abstract
     {
         $this->_setValue($value);
         if (!is_string($value) && !is_int($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 

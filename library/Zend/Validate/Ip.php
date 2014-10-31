@@ -32,14 +32,14 @@
  */
 class Zend_Validate_Ip extends Zend_Validate_Abstract
 {
-    const INVALID        = 'ipInvalid';
+    const INVALID_TYPE   = 'ipInvalid';
     const NOT_IP_ADDRESS = 'notIpAddress';
 
     /**
      * @var array
      */
     protected $_messageTemplates = array(
-        self::INVALID        => "Invalid type given. String expected",
+        self::INVALID_TYPE   => "Invalid type given. String expected",
         self::NOT_IP_ADDRESS => "'%value%' does not appear to be a valid IP address",
     );
 
@@ -122,7 +122,7 @@ class Zend_Validate_Ip extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 
