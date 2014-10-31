@@ -47,7 +47,7 @@
 class Zend_Validate_Hostname extends Zend_Validate_Abstract
 {
     const CANNOT_DECODE_PUNYCODE  = 'hostnameCannotDecodePunycode';
-    const INVALID                 = 'hostnameInvalid';
+    const INVALID_TYPE            = 'hostnameInvalid';
     const INVALID_DASH            = 'hostnameDashCharacter';
     const INVALID_HOSTNAME        = 'hostnameInvalidHostname';
     const INVALID_HOSTNAME_SCHEMA = 'hostnameInvalidHostnameSchema';
@@ -63,7 +63,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
      */
     protected $_messageTemplates = array(
         self::CANNOT_DECODE_PUNYCODE  => "'%value%' appears to be a DNS hostname but the given punycode notation cannot be decoded",
-        self::INVALID                 => "Invalid type given. String expected",
+        self::INVALID_TYPE            => "Invalid type given. String expected",
         self::INVALID_DASH            => "'%value%' appears to be a DNS hostname but contains a dash in an invalid position",
         self::INVALID_HOSTNAME        => "'%value%' does not match the expected structure for a DNS hostname",
         self::INVALID_HOSTNAME_SCHEMA => "'%value%' appears to be a DNS hostname but cannot match against hostname schema for TLD '%tld%'",
@@ -1128,7 +1128,7 @@ class Zend_Validate_Hostname extends Zend_Validate_Abstract
     public function isValid($value)
     {
         if (!is_string($value)) {
-            $this->_error(self::INVALID);
+            $this->_error(self::INVALID_TYPE);
             return false;
         }
 
