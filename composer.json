@@ -10,7 +10,10 @@
 	"homepage": "http://framework.zend.com/",
 	"license": "BSD-3-Clause",
 	"require": {
-		"php": ">=5.2.11"
+		"php": ">=5.2.11",
+		"zf1/zend-exception": "*",
+		"zf1/zend-loader": "*",
+		"zf1/zend-locale": "*"
 	},
 	"autoload": {
 		"psr-0": {
